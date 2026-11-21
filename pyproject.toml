@@ -1,0 +1,37 @@
+[project]
+name = "bm-backend"
+version = "0.1.0"
+description = "BM (Better Myself) iOS App 后端：账号与按模块云同步"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.165.0",
+    "uvicorn[standard]==0.54.0",
+    "sqlalchemy[asyncio]==2.1.9",
+    "asyncpg==0.32.0",
+    "alembic==1.20.1",
+    "pydantic[email]==2.14.4",
+    "pydantic-settings==2.16.3",
+    "pyjwt==2.15.1",
+    "boto3==1.44.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "aiosqlite==0.22.1",
+    "pytest==9.2.0",
+    "pytest-asyncio==1.5.0",
+    "httpx==0.28.1",
+]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+asyncio_default_test_loop_scope = "function"
+testpaths = ["tests"]
